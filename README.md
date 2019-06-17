@@ -1,6 +1,4 @@
-# Scala learning
-
-## Basics
+# Basics
 
 **Value**
 Give the result of an expression a name
