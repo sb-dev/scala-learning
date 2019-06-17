@@ -27,21 +27,21 @@ val three = addOne(2)
 Leave off parens on functions with no arguments
 
 ```Scala
-def addOne(m: Int): Int = m + 1
+def three() = 1 + 2
+three()
 three
 ```
 
 **Anonymous Functions**
 ```Scala
 (x: Int) => x + 1
-three
 ```
 
 Pass anonymous functions around or save them into vals
 
 ```Scala
 val addOne = (x: Int) => x + 1
-three
+addOne(1)
 ```
 
 Function made up of many expressions, use {}
@@ -63,6 +63,8 @@ Also for anonymous functions
 ```
 
 **Partial application**
+
+Partially apply a function with an underscore, which gives us another function:
 
 *{ _ + 2 }* means an unnamed parameter
 
@@ -122,4 +124,115 @@ def capitalizeAll(args: String*) = {
 ```Bash
 scala> capitalizeAll("rarity", "applejack")
 res2: Seq[String] = ArrayBuffer(Rarity, Applejack)
+```
+
+## Classes
+
+```Scala
+class calculator {
+  val brand: String = "HP"
+  def add(m: Int, n: Int): Int = m + n
+}
+```
+
+```Bash
+scala> val calc = new Calculator
+calc: Calculator = Calculator@e75a11
+
+scala> calc.add(1, 2)
+res1: Int = 3
+
+scala> calc.brand
+res2: String = "HP"
+```
+
+**Constructor**
+
+Constructors aren’t special methods, they are the code outside of method definitions in your class.
+
+```Scala
+class Calculator(brand: String) {
+  val color: String = if (brand == "TI") {
+    "blue"
+  } else if (brand == "HP") {
+    "black"
+  } else { 
+    "white"
+  }
+}
+```
+
+## Inheritance
+
+```Scala
+class ScientificCalculator(brand: String) extends Calculator(brand) {
+  def log(m: Double, base: Double) = math.log(m) / math.log(base)
+}
+```
+
+**Overloading**
+
+```Scala
+class EvenMoreScientificCalculator(brand: String) extends ScientificCalculator(brand) {
+  def log(m: Int): Double = log(m, math.exp(1))
+}
+```
+
+**Abstract classes**
+
+```Scala
+abstract class Shape {
+  def getArea(): Int
+}
+
+class Circle(r: Int) extends Shape {
+  def getArea(): Int = (r * r * 3)
+}
+```
+
+**Traits**
+
+Traits are collections of fields and behaviors that we can extend or mixin to a class.
+
+```Scala
+trait Car {
+  val brand: String
+}
+
+trait Shiny {
+  val ShineRefraction: Int
+}
+```
+
+```Scala
+class BMW extends Car {
+  val brand = "BMW"
+}
+```
+
+Extend several traits using the *with* keyword:
+
+```Scala
+class BMW extends Car with Shiny {
+  val brand = "BMW"
+  val shineRefraction = 12
+}
+```
+
+**Types**
+
+Function can also be generic and work on any type
+
+```Scala
+trait Cache[K, V] {
+  def get(key: K): V
+  def put(key: K, value: V)
+  def delete(key: K)
+}
+```
+
+Methods can also have type parameters introduced
+
+```Scala
+def remove[K] (key: K)
 ```
