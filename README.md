@@ -1,7 +1,7 @@
 # Learning Scala
 
 1. [Basics](Basics.md)  
-  a. Functions  
+  a. [Functions](Basics.md#functions)    
   b. Classes  
   c. Inheritance  
   d. Types  
