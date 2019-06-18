@@ -12,3 +12,8 @@
   g. [Case classes](Basics.md#case-classes)   
   h. [Exceptions](Basics.md#exceptions)   
 2. [Collections](Collections.md)
+  a. [Arrays, Lists & Sets](Collections.md#arrays-lists-sets)  
+  b. [Tuple](Collections.md#tuple)
+  c. [Maps](Collections.md#maps)
+  d. [Option](Collections.md#option)
+  d. [Functional Combinators](Collections.md#functional-Combinators)
